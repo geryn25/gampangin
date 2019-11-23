@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Detail Restoran</title>
+        <title>Konfirmasi Makanan</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -12,7 +12,7 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>   
     </head>
     <style>
-    #box{
+        #box{
         width: 100%;
         height: 100%;
         border-radius: 40px;
@@ -20,39 +20,48 @@
         border-color: #E74C3C;
         padding: 10%;
         margin-bottom: 10%;
-    }
-    p{
-        text-align: center;
-        font-size: 15px;
-        color: grey;
-    }
-    h1{
-        text-align: center;
-        font-size: 20px;
-    }
-    h2{
-        font-size: 15px;
-        text-align: center;
-    }
-    h{
-        text-align: center;
-    }
-    .jumlah{
-        width: 30px;
-    }
-    #footer{
-        height:50px;
-        line-height:50px;
-        background:#E74C3C;
-        color:#fff;
-        border-radius: 10px;
-        position:fixed;
-        width: 90%;
-        bottom:10px;
-    }
+        }
+        p{
+            text-align: center;
+            font-size: 15px;
+            color: grey;
+        }
+        h1{
+            text-align: center;
+            font-size: 20px;
+        }
+        h2{
+            font-size: 15px;
+            text-align: center;
+        }
+        h{
+            text-align: center;
+        }
+        .jumlah{
+            width: 30px;
+        }
+        #footer{
+            height:50px;
+            line-height:50px;
+            background:#E74C3C;
+            color:#fff;
+            border-radius: 10px;
+            position:fixed;
+            width: 90%;
+            bottom:10px;
+        }
+        .aa{
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .bb{
+            width: 96%;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
     </style>
     <body>
-        <div class="container" style="padding: 5%; margin-bottom:10px; " >
+        <div class="container" style="padding: 5%;">
             <div class="row" style="text-align: center; margin-left: 0%;">
                     <div class="">
                         <span class="col-sm-2">
@@ -67,25 +76,21 @@
                         <hr />
                     </div>
             </div>
-            <div>
-                <div class="row">
-                    <div class="">
-                        <span class="col-sm-8">
-                            <h style="font-size: 20px; text-align: center;"><b>Warung Pecel Lele Udin</b></h>
-                        </span>
-                        <span class="col-sm-4" style="text-align: right;">
-                            <img src="open.png" style="width: 60px; height: 40px;">
-                        </span>
+            <div style="text-align: center;">
+                    <h style="text-align: center; "><b>Detail Pesanan Anda</b></h>
+            </br>
+                    <div>
+                            <input class="aa" type="text" placeholder="Nama" required/>
+                            <input class="aa" type="text" maxlength="12" onkeypress="return hanyaAngka(event)" placeholder="No. Telepon" required/>
+                            <input class="bb" type="text" placeholder="Alamat" required/>
                     </div>
-                </div>
-                <p style="text-align:left;">Disini nanti dimasukin alamatnya. OKE ngga?</p>
-                <h3 style="text-align: left; font-size: 15px;" ><b>08.00 - 22.00 WIB</b></h2>
+                    <hr />
             </div>
-            <hr />
             <div id="box">
-                <div class="row">
+                <div class="row"> 
+                    <!-- semua isian dibawah ini ambil data dari detail_makanan -->
                     <div class="col-sm-4" style="text-align: center;">
-                            <img width="100%" height="100%" src="udin.jpg" style=" border-radius: 10%;"/>
+                            <!-- <img width="100%" height="100%" src="udin.jpg" style=" border-radius: 10%;"/> -->
                     </div>
                     <div class="col-sm-8">
                         <h1><b>Nama Makanan</b></h1>
@@ -116,45 +121,12 @@
                     </div>
                 </div>
             </div>
-            <div id="box">
-                <div class="row">
-                    <div class="col-sm-4" style="text-align: center;">
-                            <img width="100%" height="100%" src="udin.jpg" style=" border-radius: 10%;"/>
-                    </div>
-                    <div class="col-sm-8">
-                        <h1><b>Nama Makanan</b></h1>
-                        <p style="text-align: center;">Deskripsi makanan mau isinya apaan. jangan kosongin biar bagus</p>
-                        <label style="color: green; text-align: center; margin-left: 25%;">Tersedia</label>
-                        <label style="text-align: center;">Rp. 50.000</label>
-                        <div style="text-align: center;">
-                            <span class="col-sm-4">
-                                    <label style="color: green; ">Jumlah</label>
-                            </span>
-                             <span class="col-sm-4" style="text-align: center;" >
-                                    <input class="jumlah" type="text" maxlength="2" onkeypress="return hanyaAngka(event)" value="0"/>
-                                    <script>
-                                        function hanyaAngka(evt) {
-                                            var charCode = (evt.which) ? evt.which : event.keyCode
-                                                if (charCode > 31 && (charCode < 48 || charCode > 57))
-                                     
-                                                    return false;
-                                            return true;
-                                        }
-                                    </script>
-                             </span>
-                        </div>
-                        <div style="text-align: center;">
-                                <input type="text"  placeholder="catatan untuk penjual"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div id="footer" >
-                <!-- Tombol akan aktif jika value text field jumlah lebih dari 0 -->
-                <!-- ketika di klik akan langsung direct ke konfirmasi_makanan -->
+                <!-- DIRECT KE WHATSAPP -->
                 <h1 style="text-align: center; margin-top: 10px;"><b>Pesan Sekarang</b></h1>
             </div>
         </div>
+        
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
         <script src="liff-starter.js"></script>
     </body>
