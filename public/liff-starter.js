@@ -80,8 +80,8 @@ function initializeApp() {
 function displayLiffData() {
     document.getElementById('browserLanguage').textContent = liff.getLanguage();
     document.getElementById('sdkVersion').textContent = liff.getVersion();
-    document.getElementById('isInClient').textContent = liff.isInClient();
-    document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
+    document.getElementById('isInClient').innerHTML = liff.isInClient();
+    document.getElementById('isLoggedIn').innerHTML = liff.isLoggedIn();
     document.getElementById('deviceOS').textContent = liff.getOS();
 }
 
