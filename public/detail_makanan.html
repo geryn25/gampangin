@@ -37,6 +37,9 @@
     h{
         text-align: center;
     }
+    input{
+        width: 30px;
+    }
     </style>
     <body>
         <div class="container" style="padding: 5%; margin-bottom:10px; " >
@@ -80,7 +83,22 @@
                         <h2 style="color: green;">Tersedia</h2>
                         <h2>Rp. 50.000</h2>
                         <div style="text-align: center;">
-                            <button  type="button" class="btn btn-success">Pesan</button>
+                            <span class="col-sm-4">
+                                    <label style="color: green;">Jumlah</label>
+                            </span>
+                             <span class="col-sm-4" style="text-align: center;">
+                                    <input type="text" onkeypress="return hanyaAngka(event)" value="0"/>
+                                    <script>
+                                        function hanyaAngka(evt) {
+                                            var charCode = (evt.which) ? evt.which : event.keyCode
+                                                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                     
+                                                    return false;
+                                            return true;
+                                        }
+                                    </script>
+                             </span>
+                             
                         </div>
                     </div>
                 </div>
@@ -96,7 +114,22 @@
                         <h2 style="color: green;">Tersedia</h2>
                         <h2>Rp. 50.000</h2>
                         <div style="text-align: center;">
-                            <button  type="button" class="btn btn-success">Pesan</button>
+                            <span class="col-sm-4">
+                                    <label style="color: green;">Jumlah</label>
+                            </span>
+                             <span class="col-sm-4" style="text-align: center;">
+                                    <input type="text" onkeypress="return hanyaAngka(event)" value="0"/>
+                                    <script>
+                                        function hanyaAngka(evt) {
+                                            var charCode = (evt.which) ? evt.which : event.keyCode
+                                                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                     
+                                                    return false;
+                                            return true;
+                                        }
+                                    </script>
+                             </span>
+                             
                         </div>
                     </div>
                 </div>
