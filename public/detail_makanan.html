@@ -37,8 +37,18 @@
     h{
         text-align: center;
     }
-    input{
+    .jumlah{
         width: 30px;
+    }
+    #footer{
+        height:50px;
+        line-height:50px;
+        background:#E74C3C;
+        color:#fff;
+        border-radius: 10px;
+        position:fixed;
+        width: 90%;
+        bottom:5px;
     }
     </style>
     <body>
@@ -87,7 +97,7 @@
                                     <label style="color: green; ">Jumlah</label>
                             </span>
                              <span class="col-sm-4" style="text-align: center; " >
-                                    <input type="text" maxlength="2" onkeypress="return hanyaAngka(event)" value="0"/>
+                                    <input class="jumlah" type="text" maxlength="2" onkeypress="return hanyaAngka(event)" value="0"/>
                                     <script>
                                         function hanyaAngka(evt) {
                                             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -99,6 +109,9 @@
                                     </script>
                              </span>
                              
+                        </div>
+                        <div style="text-align: center;">
+                                <input type="text"  placeholder="catatan untuk penjual"/>
                         </div>
                     </div>
                 </div>
@@ -118,7 +131,7 @@
                                     <label style="color: green; ">Jumlah</label>
                             </span>
                              <span class="col-sm-4" style="text-align: center;" >
-                                    <input type="text" maxlength="2" onkeypress="return hanyaAngka(event)" value="0"/>
+                                    <input class="jumlah" type="text" maxlength="2" onkeypress="return hanyaAngka(event)" value="0"/>
                                     <script>
                                         function hanyaAngka(evt) {
                                             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -129,12 +142,17 @@
                                         }
                                     </script>
                              </span>
-                             
+                        </div>
+                        <div style="text-align: center;">
+                                <input type="text"  placeholder="catatan untuk penjual"/>
                         </div>
                     </div>
                 </div>
             </div>
-            
+            <div id="footer" >
+                <!-- Tombol akan aktif jika value text field jumlah lebih dari 0 -->
+                <h1 style="text-align: center; margin-top: 10px;"><b>Pesan Sekarang</b></h1>
+            </div>
         </div>
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
         <script src="liff-starter.js"></script>
