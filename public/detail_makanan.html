@@ -49,9 +49,19 @@
         position:fixed;
         width: 90%;
         bottom:10px;
+        text-align: center;
+    }
+    button{
+        background: none;
+        text-align: center;
+        border: none;
+        color: blanchedalmond;
+        font-size: 20px;
+        width: 97.5%;
     }
     </style>
     <body>
+        <form>
         <div class="container" style="padding: 5%; margin-bottom:10px; " >
             <div class="row" style="text-align: center; margin-left: 0%;">
                     <div class="">
@@ -152,10 +162,12 @@
             <div id="footer" >
                 <!-- Tombol akan aktif jika value text field jumlah lebih dari 0 -->
                 <!-- ketika di klik akan langsung direct ke konfirmasi_makanan -->
-                <h1 style="text-align: center; margin-top: 10px;"><b>Pesan Sekarang</b></h1>
+                <!-- <h1  style="text-align: center; margin-top: 10px;"><b>Pesan Sekarang</b></h1> -->
+                <button><b>Pesan Sekarang</b></button>
             </div>
         </div>
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
         <script src="liff-starter.js"></script>
+        </form>
     </body>
 </html>
