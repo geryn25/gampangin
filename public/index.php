@@ -63,6 +63,9 @@
                         </tr>
                     </table>
                 </div>
+
+        <?php include('number.php') ?>
+        
         <div class="container" style="padding: 5%; margin-bottom:10px; ;" >
             <div class="row" style="position: relative; margin-left: 7%;">
                 <div class="">
@@ -97,13 +100,20 @@
             </div>
             <h1><b>Daftar Restoran</b></h>
             <hr />
+
+            <?php 
+            $data = getMitra();
+            $mitra = json_decode($data, true);
+
+            foreach($array as $mitra):
+            ?>
             <div id="box">
                 <div class="row">
                     <div class="col-sm-4" style="text-align: center;">
                         <img width="100%" height="100%" src="udin.jpg" style=" border-radius: 10%;"/>
                     </div>
                     <div class="col-sm-8">
-                        <h1><b>Warung Pecel Lele Udin</b></h1>
+                        <h1><b><?php echo $array['nama_mitra'] ?></b></h1>
                         <p style="text-align: center;">jl. Sukabirus no. 53 (depan MSU)</p>
                         <h2 style="color: green;">Buka</h2>
                         <h2>08.00 - 22.00</h2>
@@ -113,6 +123,7 @@
                     </div>
                 </div>
             </div>
+            <?php endforeach; ?>
             <div id="box">
                 <div class="row">
                     <div class="col-sm-4" style="text-align: center;">
