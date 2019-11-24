@@ -91,7 +91,7 @@
             
 
             <div id="rss" hidden></div>
-            <div id="footer" >
+            <div id="footer" hidden>
                 <!-- Tombol akan aktif jika value text field jumlah lebih dari 0 -->
                 <!-- ketika di klik akan langsung direct ke konfirmasi_makanan -->
                 <!-- <h1  style="text-align: center; margin-top: 10px;"><b>Pesan Sekarang</b></h1> -->
@@ -158,8 +158,16 @@
                 .then(response => response.json())
                 .then(users => {
                     let output = '';
+                    var tanggal = new Date();
+                    var jam = tanggal.getHours() * 100;
+                    var buka=''
                     users.forEach(function (user) {
-
+                        if ((jam > parseInt(user.buka)) && (jam < parseInt(user.tutup))) {
+                            buka='open.png'
+                            document.getElementById("footer").removeAttribute("hidden");
+                        } else {
+                            buka = 'close.png'
+                        }
                         output += `
                 <div class="row">
                     <div class="">
@@ -167,7 +175,7 @@
                             <h style="font-size: 20px; text-align: center;"><b>${user.nama_mitra}</b></h>
                         </span>
                         <span class="col-sm-4" style="text-align: right;">
-                            <img src="open.png" style="width: 60px; height: 40px;">
+                            <img src="${buka}" style="width: 60px; height: 40px;">
                         </span>
                     </div>
                 </div>
