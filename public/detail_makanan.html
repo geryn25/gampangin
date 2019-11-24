@@ -59,6 +59,14 @@
         font-size: 20px;
         width: 97.5%;
     }
+    [hidden] {
+        display: none
+    }
+
+    #loading {
+        width: 300px;
+        text-align-last: center;
+    }   
     </style>
     <body>
         <form>
@@ -76,89 +84,14 @@
                         </span>
                         <hr />
                     </div>
+                    
             </div>
-            <div>
-                <div class="row">
-                    <div class="">
-                        <span class="col-sm-8">
-                            <h style="font-size: 20px; text-align: center;"><b>Warung Pecel Lele Udin</b></h>
-                        </span>
-                        <span class="col-sm-4" style="text-align: right;">
-                            <img src="open.png" style="width: 60px; height: 40px;">
-                        </span>
-                    </div>
-                </div>
-                <p style="text-align:left;">Disini nanti dimasukin alamatnya. OKE ngga?</p>
-                <h3 style="text-align: left; font-size: 15px;" ><b>08.00 - 22.00 WIB</b></h2>
-            </div>
+            <img id="loading" src="loading.gif" />
+            <div id="toko" hidden></div>
             <hr />
-            <div id="box">
-                <div class="row">
-                    <div class="col-sm-4" style="text-align: center;">
-                            <img width="100%" height="100%" src="udin.jpg" style=" border-radius: 10%;"/>
-                    </div>
-                    <div class="col-sm-8">
-                        <h1><b>Nama Makanan</b></h1>
-                        <p style="text-align: center;">Deskripsi makanan mau isinya apaan. jangan kosongin biar bagus</p>
-                        <label style="color: green; text-align: center; margin-left: 25%;">Tersedia</label>
-                        <label style="text-align: center;">Rp. 50.000</label>
-                        <div style="text-align: center;">
-                            <span class="col-sm-4">
-                                    <label style="color: green; ">Jumlah</label>
-                            </span>
-                             <span class="col-sm-4" style="text-align: center; " >
-                                    <input class="jumlah" type="text" maxlength="2" onkeypress="return hanyaAngka(event)" value="0"/>
-                                    <script>
-                                        function hanyaAngka(evt) {
-                                            var charCode = (evt.which) ? evt.which : event.keyCode
-                                                if (charCode > 31 && (charCode < 48 || charCode > 57))
-                                     
-                                                    return false;
-                                            return true;
-                                        }
-                                    </script>
-                             </span>
-                             
-                        </div>
-                        <div style="text-align: center;">
-                                <input type="text"  placeholder="catatan untuk penjual"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="box">
-                <div class="row">
-                    <div class="col-sm-4" style="text-align: center;">
-                            <img width="100%" height="100%" src="udin.jpg" style=" border-radius: 10%;"/>
-                    </div>
-                    <div class="col-sm-8">
-                        <h1><b>Nama Makanan</b></h1>
-                        <p style="text-align: center;">Deskripsi makanan mau isinya apaan. jangan kosongin biar bagus</p>
-                        <label style="color: green; text-align: center; margin-left: 25%;">Tersedia</label>
-                        <label style="text-align: center;">Rp. 50.000</label>
-                        <div style="text-align: center;">
-                            <span class="col-sm-4">
-                                    <label style="color: green; ">Jumlah</label>
-                            </span>
-                             <span class="col-sm-4" style="text-align: center;" >
-                                    <input class="jumlah" type="text" maxlength="2" onkeypress="return hanyaAngka(event)" value="0"/>
-                                    <script>
-                                        function hanyaAngka(evt) {
-                                            var charCode = (evt.which) ? evt.which : event.keyCode
-                                                if (charCode > 31 && (charCode < 48 || charCode > 57))
-                                     
-                                                    return false;
-                                            return true;
-                                        }
-                                    </script>
-                             </span>
-                        </div>
-                        <div style="text-align: center;">
-                                <input type="text"  placeholder="catatan untuk penjual"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+
+            <div id="rss" hidden></div>
             <div id="footer" >
                 <!-- Tombol akan aktif jika value text field jumlah lebih dari 0 -->
                 <!-- ketika di klik akan langsung direct ke konfirmasi_makanan -->
@@ -168,6 +101,98 @@
         </div>
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
         <script src="liff-starter.js"></script>
+        <script>
+         window.onload = function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+    var proxyUrl = 'https://floating-lake-80001.herokuapp.com/',
+                targetUrl = 'https://delibot.000webhostapp.com/makanan?id_toko='+ data.id;
+            fetch(proxyUrl + targetUrl)
+                .then(response => response.json())
+                .then(users => {
+                    let output = '';
+                    users.forEach(function (user) {
+
+                        output += `
+                            <div id="box">
+                        <div class="row">
+                    <div class="col-sm-4" style="text-align: center;">
+                            <img width="100%" height="100%" src="udin.jpg" style=" border-radius: 10%;"/>
+                    </div>
+                    <div class="col-sm-8">
+                        <h1><b>${user.nama_makanan}</b></h1>
+                        <p style="text-align: center;">${user.deskripsi}</p>
+                        <label style="color: green; text-align: center; margin-left: 25%;">Tersedia</label>
+                        <label style="text-align: center;">Rp. ${user.harga}</label>
+                        <div style="text-align: center;">
+                            <span class="col-sm-4">
+                                    <label style="color: green; ">Jumlah</label>
+                            </span>
+                             <span class="col-sm-4" style="text-align: center; " >
+                                    <input class="jumlah" type="text" maxlength="2" onkeypress="return hanyaAngka(event)" value="0"/>
+                             </span>
+                             
+                        </div>
+                        <div style="text-align: center;">
+                                <input type="text"  placeholder="catatan untuk penjual"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+                        `;
+                    });
+                    document.getElementById("rss").innerHTML = output;
+                    document.getElementById("rss").removeAttribute("hidden");
+                });
+    
+
+
+    var proxyUrl = 'https://floating-lake-80001.herokuapp.com/',
+                targetUrl = 'https://delibot.000webhostapp.com/mitra?id='+ data.id;
+            fetch(proxyUrl + targetUrl)
+                .then(response => response.json())
+                .then(users => {
+                    let output = '';
+                    users.forEach(function (user) {
+
+                        output += `
+                <div class="row">
+                    <div class="">
+                        <span class="col-sm-8">
+                            <h style="font-size: 20px; text-align: center;"><b>${user.nama_mitra}</b></h>
+                        </span>
+                        <span class="col-sm-4" style="text-align: right;">
+                            <img src="open.png" style="width: 60px; height: 40px;">
+                        </span>
+                    </div>
+                </div>
+                <p style="text-align:left;">${user.alamat}</p>
+                <h3 style="text-align: left; font-size: 15px;" ><b>${user.buka[0]}${user.buka[1]}.${user.buka[2]}${user.buka[3]} - ${user.tutup[0]}${user.tutup[1]}.${user.tutup[2]}${user.tutup[3]}</b></h2>
+    
+                        `;
+                    });
+                    document.getElementById("toko").innerHTML = output;
+                    document.getElementById("toko").removeAttribute("hidden");
+            document.getElementById("loading").remove();
+                });
+    
+}
+        </script>
+        <script>
+                function hanyaAngka(evt) {
+                    var charCode = (evt.which) ? evt.which : event.keyCode
+                        if (charCode > 31 && (charCode < 48 || charCode > 57))
+             
+                            return false;
+                    return true;
+                }
+            </script>
         </form>
     </body>
 </html>

@@ -55,6 +55,7 @@
 
     #loading {
         width: 300px;
+        text-align:center;
     }
 </style>
 
@@ -129,6 +130,7 @@
             <img id="loading" src="loading.gif" />
 
             <div id="rss" hidden></div>
+            
 
 
 
@@ -154,7 +156,7 @@
                     users.forEach(function (user) {
                         if ((jam > parseInt(user.buka)) && (jam < parseInt(user.tutup))) {
                             var buka = 'Buka';
-                            var pesan = '<button type="button" class="btn btn-success">Pesan</button>';
+                            var pesan = '<form action="detail_makanan.html"><input type ="text" id="id" name="id" value="'+user.id +'" hidden><button type="submit" class="btn btn-success" readonly>Pesan</button></form>';
                         } else {
                             var buka = 'Tutup'
                             var warna = 'red'
@@ -190,6 +192,13 @@
             
 
         }
+
+    function testJS() {
+    var b = document.getElementById('id').value,
+        url = 'http://path_to_your_html_files/next.html?id=' + encodeURIComponent(b);
+
+    document.location.href = url;
+}
     </script>
 
 </body>

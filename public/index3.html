@@ -1,39 +1,28 @@
-<body>
-        <div>
-            <h1>Getting Started With Fetch API</h1>
-            <button id="fetchUserDataBtn">Fetch User Data</button>
-        </div>
-        <hr>
-        <div id="response"></div>
-
-<script>
-    
-    async function postData(url = '', data = {}) {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'no-cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrer: 'no-referrer', // no-referrer, *client
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  return await response.json(); // parses JSON response into native JavaScript objects
+<head>
+    <script language="javascript" type="text/javascript" src="asd.js"></script>
+ </head>
+ 
+ <body>
+ 
+ <form name="form1" action="next.html" method="get">
+ <table>
+     <tr>
+         <td id="here">test</td>
+     </tr>
+ </table>
+ </form>
+ 
+ </body>
+ <script>
+ window.onload = function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+    document.getElementById('here').innerHTML = data.id;
 }
-async function main() {
-        try {
-        const data = await postData('https://delibot.000webhostapp.com/mitra/', { answer: 42 });
-        console.log(JSON.stringify(data)); // JSON-string from `response.json()` call
-    } catch (error) {
-        console.error(error);
-
-    }
-    }
-
-</script>
-</body>
+ </script>
+ </html>
