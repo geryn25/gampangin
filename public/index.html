@@ -11,15 +11,21 @@
         
 
         function fetchUserData() {
-            const Http = new XMLHttpRequest();
-        const url = 'https://jsonplaceholder.typicode.com/posts';
-        Http.open("GET", url);
-        Http.send();
-        Http.onreadystatechange = (e) => {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log(Http.responseText)
-            }
-        }
+            fetch('https://delibot.000webhostapp.com/mitra')
+                .then(response => response.json())
+                .then(users => {
+                    let output = '<h2>Lists of Users</h2>';
+                    output += '<ul>';
+                    users.forEach(function (user) {
+                        output += `
+                        <li>
+                            ${user.nama_mitra}
+                        </li>
+                    `;
+                    });
+                    output += '</ul>'
+                    document.getElementById("response").innerHTML = output;
+                });
         }
     </script>
 </body>
