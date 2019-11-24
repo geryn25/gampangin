@@ -10,7 +10,7 @@
         document.getElementById('fetchUserDataBtn').addEventListener('click', fetchUserData);
 
         function fetchUserData() {
-            fetch('https://delibot.000webhostapp.com/mitra')
+            fetch('http://delibot.000webhostapp.com/mitra')
                 .then(response => response.json())
                 .then(users => {
                     let output = '<h2>Lists of Users</h2>';
