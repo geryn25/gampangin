@@ -49,6 +49,15 @@
         position:fixed;
         width: 90%;
         bottom:10px;
+        text-align: center;
+    }
+    .pesan{
+        background: none;
+        text-align: center;
+        border: none;
+        color: blanchedalmond;
+        font-size: 20px;
+        width: 97.5%;
     }
     </style>
     <body>
@@ -88,39 +97,38 @@
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-2 col-form-label">Nama </label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="nama" placeholder="Nama">
+                                    <input type="text" class="form-control" id="nama" placeholder="Nama" required>
                                 </div>
                             </div>
                                 <div class="form-group row">
                                   <label for="inputPassword" class="col-sm-2 col-form-label">Alamat</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="alamat" placeholder="Alamat">
+                                    <input type="text" class="form-control" id="alamat" placeholder="Alamat" required>
                                 </div>
                             </div>
                                 <div class="form-group row">
                                   <label for="inputPassword" class="col-sm-2 col-form-label">Nomor Telepon</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="noTelepon" placeholder="Nomor Telepon">
-                                    </div>    
-                                </div>
-                                <div class="form-group row">
-                                  <label for="inputPassword" class="col-sm-2 col-form-label">Silakan Unggah Dokumen</label>
-                                    <div class="col-sm-10">
-                                        <input type="file" class="form-control" id="dokumen" placeholder="unggah File">
+                                        <input type="text" class="form-control" id="noTelepon" placeholder="Nomor Telepon" required>
                                     </div>    
                                 </div>
                                 <div class="form-group row">
                                   <label for="inputPassword" class="col-sm-2 col-form-label">Catatan</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="catatan" placeholder="Catatan">
+                                        <input type="text" class="form-control" id="catatan" placeholder="Catatan" required>
                                     </div>    
                                 </div>
-                        </form>
+                                <div class="form-group row" style="text-align: center;"><b>
+                                    <label style="margin-bottom: 5px; color: green;" for="inputPassword" class="col-sm-2 col-form-label">Setelah Kirim data di whatsapp. segera kirimkan melalui whatsapp file yang akan di cetak </b></label><br>
+                                </b>
+                                </div>
+                        
                 </div>
             </div>
             <div id="footer" >
                 <!-- Direct ke whatsapp langsung -->
-                <h1 style="text-align: center; margin-top: 10px;"><b>Pesan Sekarang</b></h1>
+                <button class="pesan"><b>Pesan Sekarang</b></button>
+            </form>
             </div>
         </div>
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
