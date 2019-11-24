@@ -149,7 +149,7 @@
                                 var pesan = '<button type="button" class="btn btn-secondary" readonly>Pesan</button>'
                             }
                             
-                            output += `${jam} ${parseInt(user.buka)}
+                            output += `
                             
                             <div id="box">
                 <div class="row">
@@ -160,7 +160,7 @@
                         <h1><b>${user.nama_mitra}</b></h1>
                         <p style="text-align: center;">${user.alamat}</p>
                         <h2 style="color: ${warna};">${buka}</h2>
-                        <h2>${parseInt(user.buka)} - ${user.tutup}</h2>
+                        <h2>${user.buka[0]}${user.buka[1]}.${user.buka[2]}${user.buka[3]} - ${user.tutup[0]}${user.tutup[1]}.${user.tutup[2]}${user.tutup[3]}</h2>
                         <div style="text-align: center;">
                             ${pesan}
                         </div>
