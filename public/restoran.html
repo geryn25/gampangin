@@ -156,6 +156,7 @@
                     users.forEach(function (user) {
                         if ((jam > parseInt(user.buka)) && (jam < parseInt(user.tutup))) {
                             var buka = 'Buka';
+                            var warna='green'
                             var pesan = '<form action="detail_makanan.html"><input type ="text" id="id" name="id" value="'+user.id +'" hidden><button type="submit" class="btn btn-success" readonly>Pesan</button></form>';
                         } else {
                             var buka = 'Tutup'
