@@ -48,10 +48,19 @@
     h {
         text-align: center;
     }
+
+    [hidden] {
+        display: none
+    }
+
+    #loading {
+        width: 300px;
+    }
 </style>
+
 <body>
-            <!-- <div> -->
-        <!-- <h1>Getting Started With Fetch API</h1>
+    <!-- <div> -->
+    <!-- <h1>Getting Started With Fetch API</h1>
         <button id="fetchUserDataBtn">Fetch User Data</button>
     </div>
     
@@ -117,10 +126,12 @@
         </div>
         <h1><b>Daftar Restoran</b></h>
             <hr />
-            <div id="rss"></div>
+            <img id="loading" src="loading.gif" />
+
+            <div id="rss" hidden></div>
 
 
-            
+
 
 
     </div>
@@ -130,26 +141,27 @@
     <script src="mitraapi.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-            window.onload = function () {
-                var proxyUrl = 'https://floating-lake-80001.herokuapp.com/',
-                    targetUrl = 'https://delibot.000webhostapp.com/mitra?jenis_mitra=makanan';
-                fetch(proxyUrl + targetUrl)
-                    .then(response => response.json())
-                    .then(users => {
-                        let output = '';
-                        var tanggal = new Date();
-                        var jam = tanggal.getHours()*100;
-                        users.forEach(function (user) {
-                            if ((jam>parseInt(user.buka)) && (jam<parseInt(user.tutup))) {
-                                var buka = 'Buka';
-                                var pesan = '<button type="button" class="btn btn-success">Pesan</button>';
-                            } else {
-                                var buka = 'Tutup'
-                                var warna = 'red'
-                                var pesan = '<button type="button" class="btn btn-secondary" readonly>Pesan</button>'
-                            }
-                            
-                            output += `
+        window.onload = function () {
+
+            var proxyUrl = 'https://floating-lake-80001.herokuapp.com/',
+                targetUrl = 'https://delibot.000webhostapp.com/mitra?jenis_mitra=makanan';
+            fetch(proxyUrl + targetUrl)
+                .then(response => response.json())
+                .then(users => {
+                    let output = '';
+                    var tanggal = new Date();
+                    var jam = tanggal.getHours() * 100;
+                    users.forEach(function (user) {
+                        if ((jam > parseInt(user.buka)) && (jam < parseInt(user.tutup))) {
+                            var buka = 'Buka';
+                            var pesan = '<button type="button" class="btn btn-success">Pesan</button>';
+                        } else {
+                            var buka = 'Tutup'
+                            var warna = 'red'
+                            var pesan = '<button type="button" class="btn btn-secondary" readonly>Pesan</button>'
+                        }
+
+                        output += `
                             
                             <div id="box">
                 <div class="row">
@@ -169,12 +181,15 @@
             </div>
     
                         `;
-                        });
-                        document.getElementById("rss").innerHTML = output;
                     });
+                    document.getElementById("rss").innerHTML = output;
+                });
+            document.getElementById("rss").removeAttribute("hidden");
+            document.getElementById("loading").remove();
+            
 
-            }
-        </script>
+        }
+    </script>
 
 </body>
 
