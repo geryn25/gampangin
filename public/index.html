@@ -8,7 +8,10 @@
 
     <script>
         document.getElementById('fetchUserDataBtn').addEventListener('click', fetchUserData);
-        const Http = new XMLHttpRequest();
+        
+
+        function fetchUserData() {
+            const Http = new XMLHttpRequest();
         const url = 'https://jsonplaceholder.typicode.com/posts';
         Http.open("GET", url);
         Http.send();
@@ -17,23 +20,6 @@
                 console.log(Http.responseText)
             }
         }
-
-        function fetchUserData() {
-            fetch('https://delibot.000webhostapp.com/mitra')
-                .then(response => response.json())
-                .then(users => {
-                    let output = '<h2>Lists of Users</h2>';
-                    output += '<ul>';
-                    users.forEach(function (user) {
-                        output += `
-                        <li>
-                            ${user.nama_mitra}
-                        </li>
-                    `;
-                    });
-                    output += '</ul>'
-                    document.getElementById("response").innerHTML = output;
-                });
         }
     </script>
 </body>
