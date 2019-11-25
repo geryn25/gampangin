@@ -125,8 +125,7 @@
                 <!-- ketika di klik akan langsung direct ke konfirmasi_makanan -->
                 <!-- <h1  style="text-align: center; margin-top: 10px;"><b>Pesan Sekarang</b></h1> -->
 
-                <a id="wa" href="https://wa.me/08982788440?text=namamitra%0Anama:Irbah%0alamat:Umayah%201%0Anotelepon:08982788440%0APesanan:{isi%20pesanan%20yang%20kamu%20inginginkan}" onclick="this.href=redirectWA()"><button id="myButton"><b>Pesan
-                            Sekarang</b></button></a>
+                <button id="myButton" onclick="redirectWA()"><b>Pesan Sekarang</b></button>
             </div>
         </div>
     </id>
@@ -201,8 +200,8 @@
                         } else {
                             buka = 'close.png'
                         }
-                        output += '<p id="telpontoko" style="text-align:left;" hidden>' + $user.kontak_mitra + '</p>';
-                        output += '<p id="namamitra" style="text-align:left;" hidden>' + $user.nama_mitra + '</p>';
+                        output += '<p id="telpontoko" style="text-align:left;" hidden>' + user.kontak_mitra + '</p>';
+                        output += '<p id="namamitra" style="text-align:left;" hidden>' + user.nama_mitra + '</p>';
                         output += `
                 <div class="row">
                     <div class="">
@@ -228,12 +227,27 @@
         }
         function redirectWA() {
             var nama = document.getElementById("nama").value;
+            var namabaru = nama.split(" ");
+            var name='';
+            for (i=0;i<namabaru.length;i++) {
+                name+=namabaru[i]+'%20';
+            }
             var notel = document.getElementById("telepon").value;
             var alamat = document.getElementById("alamat").value;
-            var telpontoko = document.getElementById("telpontoko").value;
-            var namamitra = document.getElementById("namamitra").value;
-            var WA = 'https://wa.me/' + telpontoko + '?text=' + namamitra + '%0nama:' + nama + '%0alamat:' + alamat + '%0notelepon:' + notel + '%0Pesanan:{isi pesanan yang kamu inginginkan}'
-            return WA;
+            var alamatbaru = alamat.split(" ");
+            var location='';
+            for (i=0;i<alamatbaru.length;i++) {
+                location+=alamatbaru[i]+'%20';
+            }
+            var telpontoko = document.getElementById("telpontoko").innerHTML;
+            var namamitra = document.getElementById("namamitra").innerHTML;
+            var mitrabaru = namamitra.split(" ");
+            var mit=''
+            for (i=0;i<mitrabaru.length;i++) {
+                mit+=mitrabaru[i]+'%20';
+            }
+            var WA = 'https://wa.me/' + telpontoko + '?text=' + mit + '%0Anama:' + nama + '%0Aalamat:' + alamat + '%0Anotelepon:' + notel + '%0APesanan:{isi pesanan yang kamu inginginkan}'
+            setTimeout(function(){window.location = WA;},1000);
         }
 
         function testJS() {
