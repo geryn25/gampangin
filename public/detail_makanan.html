@@ -247,7 +247,7 @@
             for (i=0;i<mitrabaru.length;i++) {
                 mit+=mitrabaru[i]+'%20';
             }
-            var WA = 'https://wa.me/' + telpontoko + '?text=' + mit + '%0Anama:' + nama + '%0Aalamat:' + alamat + '%0Anotelepon:' + notel + '%0APesanan:{------- isi pesanan yang kamu inginginkan --------}'
+            var WA = 'https://wa.me/' + telpontoko + '?text=' + mit + '%0A%0Anama:*' + nama + '*%0Aalamat:*' + alamat + '*%0Anotelepon:*' + notel + '*%0APesanan:{------- isi pesanan yang kamu inginginkan --------}'
             setTimeout(function(){window.location = WA;},1000);
         }
 
