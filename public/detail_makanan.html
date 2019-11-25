@@ -88,6 +88,17 @@
             <img id="loading" src="loading.gif" />
             <div id="toko" hidden></div>
             <hr />
+            <div id="identitas" style="text-align: center;" hidden>
+                    <h style="text-align: center; "><b>Masukkan Identitas Anda</b></h>
+            </br>
+                    <div>
+                            <input class="aa" id="nama" type="text" placeholder="Nama" required/>
+                            <input class="aa" id="telepon" type="text" maxlength="12" onkeypress="return hanyaAngka(event)" placeholder="No. Telepon" required/>
+                            <input class="bb" id="alamat" type="text" placeholder="Alamat" required/>
+                    </div>
+                    <hr />
+            </div>
+            <hr />
             
 
             <div id="rss" hidden></div>
@@ -95,7 +106,7 @@
                 <!-- Tombol akan aktif jika value text field jumlah lebih dari 0 -->
                 <!-- ketika di klik akan langsung direct ke konfirmasi_makanan -->
                 <!-- <h1  style="text-align: center; margin-top: 10px;"><b>Pesan Sekarang</b></h1> -->
-                <button><b>Pesan Sekarang</b></button>
+                <button id="myButton" onclick="redirectWA()"><b>Pesan Sekarang</b></button>
             </div>
         </div>
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
@@ -148,6 +159,7 @@
                     });
                     document.getElementById("rss").innerHTML = output;
                     document.getElementById("rss").removeAttribute("hidden");
+                    document.getElementById("loading").remove();
                 });
     
 
@@ -168,6 +180,8 @@
                         } else {
                             buka = 'close.png'
                         }
+                        output+='<p id="telpontoko" style="text-align:left;" hidden>'+$user.kontak_mitra+'</p>';
+                        output+='<p id="namamitra" style="text-align:left;" hidden>'+$user.nama_mitra+'</p>';
                         output += `
                 <div class="row">
                     <div class="">
@@ -186,9 +200,26 @@
                     });
                     document.getElementById("toko").innerHTML = output;
                     document.getElementById("toko").removeAttribute("hidden");
-            document.getElementById("loading").remove();
+            
                 });
+                document.getElementById("identitas").removeAttribute("hidden");
     
+}
+function redirectWA(){
+    var nama = document.getElementById("nama").value; 
+    var notel = document.getElementById("telepon").value; 
+    var alamat = document.getElementById("alamat").value;
+    var telpontoko = document.getElementById("telpontoko").value;
+    var namamitra = document.getElementById("namamitra").value;
+    var WA = 'https://wa.me/'+telpontoko+'?text='+namamitra+'%0nama:'+nama+'%0alamat:'+alamat+'%0notelepon:'+notel+'%0Pesanan:{isi pesanan yang kamu inginginkan}'
+    window.location = WA
+}
+
+function testJS() {
+    var b = document.getElementById('id').value,
+        url = 'http://path_to_your_html_files/konfirmasi_makanan.html?id=' + encodeURIComponent(b);
+
+    document.location.href = url;
 }
         </script>
         <script>
